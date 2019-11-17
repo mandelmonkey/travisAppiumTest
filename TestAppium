@@ -1,0 +1,12 @@
+echo "installing appium and mocha"
+npm install -g appium mocha 
+echo "install wd"
+npm install wd 
+echo "start appium"
+appium &
+echo "download zip"
+wget https://mandelduck.io/Nayuta.zip
+echo "unzip zip"
+unzip Nayuta.zip
+echo "set up done"
+ 
