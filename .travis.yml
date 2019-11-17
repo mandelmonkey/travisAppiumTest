@@ -19,7 +19,7 @@ jobs:
         - npm install -g appium
         - npm install -g mocha
         - npm install wd 
-        - appium &
+        - appium --log-level info > appium_log.txt &
         - go get -u golang.org/x/tools/...
         - go get -u -v github.com/halseth/falafel
         - go get golang.org/x/mobile/cmd/gomobile
