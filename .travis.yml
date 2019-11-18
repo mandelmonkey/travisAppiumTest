@@ -30,7 +30,7 @@ jobs:
         - ti sdk install 8.1.0.GA --no-progress-bars  
         - ./CreateFrameworks
         - ti clean
-        - ti build -p ios --build-only
+        - ti build -p ios --log-level info --build-only
         - echo "build succeded"
 
       before_script:
