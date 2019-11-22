@@ -1,45 +1,5 @@
 jobs:
-  include:
-    - stage: ios
-      language: objective-c  
-      os: osx
-      osx_image: xcode11.2 
-      cache:
-        directories:
-        - $HOME/.m2
-      env: 
-        - NODE_VERSION="8.16.0" PLATFORM="ios" BUILD_COMMAND="ti build -p ios --build-only"
-      before_install:
-        - nvm install $NODE_VERSION 
-        - export GOPATH=/Users/travis/go
-        - export PATH=$GOPATH/bin:$PATH
-        - open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app 
-
-      install: 
-        - npm install -g appium
-        - npm install -g mocha
-        - npm install wd 
-        - appium --log-level info &
-        - go get -u golang.org/x/tools/...
-        - go get -u -v github.com/halseth/falafel
-        - go get golang.org/x/mobile/cmd/gomobile
-        - gomobile init
-        - npm install -g appcelerator titanium alloy gulp
-        - npm install gulp underscore moment gulp-util xml2js cloudinary
-        - ti sdk install latest --no-progress-bars
-        - ti sdk install 8.1.0.GA --no-progress-bars  
-        - ./CreateFrameworks
-        - ti clean
-        - ti build -p ios --log-level info --build-only
-        - echo "build succeded"
-
-      before_script:
-        # - gulp 'start:emulator'
-        # - gulp 'config:tiapp' --test
-
-      script:
-        - mocha test4.js
-        
+  include:   
     - stage: android
       language: java
       dist: trusty 
@@ -51,8 +11,8 @@ jobs:
         - nvm install $NODE_VERSION
         - npm install -g appium
         - npm install -g mocha
-        - npm install wd 
-        - appium &
+        - npm install wd
+        - appium --log-level info & 
         - export ANDROID_HOME=/home/travis/build
         - export ANDROID_SDK=$ANDROID_HOME
         - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
@@ -66,15 +26,57 @@ jobs:
         - ti sdk install 8.1.0.GA --no-progress-bars
         - java -version
         - echo $JAVA_HOME 
-        - gulp 'install:android_sdk' 
-        - ti build -p android --build-only
+        - gulp 'install:android_sdk'
+        - echo $ANDROID_SDK 
+        - echo $ANDROID_HOME 
+        - ti build -p android  --log-level info --build-only
 
       before_script:
         # - gulp 'start:emulator'
         # - gulp 'config:tiapp' --test
 
       script: 
-        - mocha test5.js
+        - mocha testAndroid.js
+
+    - stage: ios
+      language: objective-c  
+      os: osx
+      osx_image: xcode11.2 
+      cache:
+        directories:
+        - $HOME/.m2
+      env: 
+        - NODE_VERSION="8.16.0" PLATFORM="ios" BUILD_COMMAND="ti build -p ios --build-only"
+      before_install:
+        - openssl aes-256-cbc -K $encrypted_979228d9d50c_key -iv $encrypted_979228d9d50c_iv -in tiapp.xml.enc -out tiapp.xml -d
+        - nvm install $NODE_VERSION 
+        - export GOPATH=/Users/travis/go
+        - export PATH=$GOPATH/bin:$PATH 
+        - open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app 
+
+      install: 
+        - npm install -g appium
+        - npm install -g mocha
+        - npm install wd 
+        - appium --log-level info &
+        - go get -u golang.org/x/tools/...
+        - go get -u -v github.com/halseth/falafel
+        - go get golang.org/x/mobile/cmd/gomobile
+        - gomobile init
+        - npm install -g appcelerator titanium alloy underscore
+        - ti sdk install latest --no-progress-bars
+        - ti sdk install 8.1.0.GA --no-progress-bars  
+        - ./CreateFrameworks
+        - ti clean
+        - ti build -p ios --log-level info --build-only
+        - echo "build succeded"
+
+      before_script:
+        # - gulp 'start:emulator'
+        # - gulp 'config:tiapp' --test
+
+      script:
+        - mocha tests.js
 
 notifications:
   email:

@@ -17,23 +17,17 @@ var serverConfig =  {
   
 driver = wd.promiseChainRemote(serverConfig);
 //require("./helpers/logging").configure(driver);
+var desired =  { 
+  browserName: '',
+  platformName: 'Android', 
+  avd:"Pixel_2_API_28",
+  deviceName: 'Pixel_2_API_28', 
+    app: process.cwd()+"/build/android/bin/Nayuta.apk",
+        automationName:"UiAutomator2",
+"appActivity": ".NayutaActivity",
+"appPackage": "co.nayuta.wallet"
+}; 
 
-var desired = {
-  "name":"nayuta test",
-  "platformName": "ios",
-  platformVersion: '12.0',//13.0
-deviceName: 'iPhone X',
-//	"platformVersion": "13.0",
-//	"deviceName": "iPhone 11 Pro Max",
-  //"app": "/Users/chris/Documents/Appcelerator_Studio_Workspace/nayuta/build/iphone/build/Products/Debug-iphonesimulator/Nayuta.app",
-  "app":process.cwd()+"/build/iphone/build/Products/Debug-iphonesimulator/Nayuta.app",
-  "automationName": "XCUITest",
-  "useNewWDA":false,
-  "noReset": true,
-  "showXcodeLog":false, 
-};
-
- 
 return driver.init(desired);
 });
 
