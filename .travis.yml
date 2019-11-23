@@ -35,7 +35,7 @@ jobs:
         # - gulp 'config:tiapp' --test
 
       script: 
-        - mocha testAndroid.js
+        - mocha androidTest.js
 
     - stage: ios
       language: objective-c  
