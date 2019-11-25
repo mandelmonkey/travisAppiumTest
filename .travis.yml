@@ -21,7 +21,6 @@ jobs:
         - echo $JAVA_HOME  
         - echo $ANDROID_SDK 
         - echo $ANDROID_HOME 
-        - echo no | avdmanager create avd --force -n test -k "system-images;android-26;sys-img-x86_64-google_apis-25"
         - nvm install $NODE_VERSION
         - npm install -g appium mocha
         - npm install wd
