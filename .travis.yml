@@ -9,8 +9,8 @@ jobs:
         components:
           - platform-tools
           - tools
-          - build-tools-28.0.3
-          - android-28
+          - build-tools-26.0.1
+          - android-26
           - extra-android-m2repository
       cache: npm
       env: 
@@ -28,9 +28,9 @@ jobs:
         - java -version
         - echo $JAVA_HOME  
         - echo $ANDROID_SDK 
-        - echo $ANDROID_HOME 
+        - echo $ANDROID_HOME  
         - ti build -p android --log-level info --build-only
-        - echo no | avdmanager create avd --force -n test -k "system-images;android-25;google_apis;arm64-v8a"
+        - echo no | avdmanager create avd --force -n test -k "system-images;android-26;sys-img-x86_64-google_apis-25"
 
       before_script:
         # - gulp 'start:emulator'
