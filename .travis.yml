@@ -29,7 +29,7 @@ jobs:
         - appium --log-level info &
 
       install: 
-        - echo no | android create avd --force -n test -t android-28 --abi x86 -no-accel
+        - echo no | android create avd --force -n test -t android-28 --abi x86
         - emulator -avd test -no-skin -no-audio -no-window &
         - android-wait-for-emulator
         - npm install -g appcelerator titanium alloy gulp
