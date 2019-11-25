@@ -1,6 +1,7 @@
 jobs:
   include:   
     - stage: android
+      language: android
       android:
         components:
                 - platform-tools
