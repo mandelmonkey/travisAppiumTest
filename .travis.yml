@@ -20,7 +20,9 @@ jobs:
         - nvm install $NODE_VERSION
         - npm install -g appium mocha
         - npm install wd
-        - appium --log-level info & 
+        - appium --log-level info &
+        - yes | sdkmanager "platforms;android-28"
+        - yes | sdkmanager "build-tools;28.0.3" 
 
       install: 
         - npm install -g appcelerator titanium alloy gulp
