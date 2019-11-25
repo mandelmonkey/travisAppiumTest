@@ -16,16 +16,16 @@ jobs:
         - NODE_VERSION="8.16.0" PLATFORM="android" ANDROID_VERSION="28" ANDROID_API_LEVEL=28 ANDROID_BUILD_TOOLS_VERSION=28.0.3 ANDROID_ABI=armeabi-v7a
       before_install:
         - touch $HOME/.android/repositories.cfg
-        - nvm install $NODE_VERSION
-        - npm install -g appium mocha
-        - npm install wd
-        - appium --log-level info &
         - yes | sdkmanager "platforms;android-28"
         - yes | sdkmanager "build-tools;28.0.3" 
         - echo $JAVA_HOME  
         - echo $ANDROID_SDK 
         - echo $ANDROID_HOME 
-        - echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force -n test -k "system-images;android-26;sys-img-x86_64-google_apis-25"
+        - echo no | avdmanager create avd --force -n test -k "system-images;android-26;sys-img-x86_64-google_apis-25"
+        - nvm install $NODE_VERSION
+        - npm install -g appium mocha
+        - npm install wd
+        - appium --log-level info &
 
       install: 
         - npm install -g appcelerator titanium alloy gulp
