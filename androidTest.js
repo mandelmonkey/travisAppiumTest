@@ -1,8 +1,7 @@
 
 var wd = require("wd"),
 _ = require('underscore'),
-Q = require('q');
-//serverConfigs = require('./helpers/appium-servers');
+Q = require('q'); 
 
 describe("Nayuta Test", function () {
 this.timeout(100000000);
@@ -15,8 +14,8 @@ var serverConfig =  {
     port: 4723
   };
   
-driver = wd.promiseChainRemote(serverConfig);
-//require("./helpers/logging").configure(driver);
+driver = wd.promiseChainRemote(serverConfig); 
+
 var desired =  { 
   browserName: '',
   platformName: 'Android', 
@@ -75,19 +74,6 @@ elementByAccessibilityId('Create New Wallet.')
 
 });
 
-it("Should Accept Disclaimer", function () { 
- 
-  return driver.dismissAlert().sleep(2000)
- 
-
-});
-
-it("Should Press Testnet", function () { 
-
-  return driver.dismissAlert().sleep(2000)
- 
-
-});
  
 
 
