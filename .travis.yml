@@ -12,6 +12,10 @@ jobs:
           - android-26
           - extra-android-m2repository
           - sys-img-x86_64-google_apis-28
+        licenses:
+          - 'android-sdk-preview-license-d099d938'
+          - 'android-sdk-license-.+'
+          - 'google-gdk-license-.+'
       cache: npm
       env: 
         - NODE_VERSION="8.16.0" PLATFORM="android" ANDROID_VERSION="28" ANDROID_API_LEVEL=28 ANDROID_BUILD_TOOLS_VERSION=28.0.3 ANDROID_ABI=armeabi-v7a
@@ -22,6 +26,12 @@ jobs:
         - android list sdk --extended --no-ui --all
         - android list targets
         - echo "y" | android update sdk -a --no-ui --filter sys-img-x86_64-google_apis-28,sys-img-x86_64-android-28
+        - emulator -list-avds
+        - echo no | android create avd --force --name testAVD --abi google_apis/x86_64 --package 'system-images;android-28;google_apis;x86_64'
+         # - echo no | android create avd --force -n test -t android-28 --abi x86_64
+         # - emulator -avd test -no-skin -no-audio -no-window &
+        - emulator -list-avds
+        - android-wait-for-emulator
         - echo $JAVA_HOME  
         - echo $ANDROID_SDK 
         - echo $ANDROID_HOME 
@@ -32,9 +42,6 @@ jobs:
         - appium --log-level info &
 
       install: 
-        - echo no | android create avd --force -n test -t android-28 --abi x86_64
-        - emulator -avd test -no-skin -no-audio -no-window &
-        - android-wait-for-emulator
         - npm install -g appcelerator titanium alloy gulp
         - npm install gulp underscore moment gulp-util xml2js cloudinary
         - ti sdk install 8.1.0.GA --no-progress-bars
