@@ -3,7 +3,7 @@ jobs:
     - stage: android 
       sudo: required
       os: linux
-      dist: trusty
+      dist: bionic
       addons:
         apt:
           packages:
