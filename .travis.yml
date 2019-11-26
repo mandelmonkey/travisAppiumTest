@@ -19,6 +19,8 @@ jobs:
         - touch $HOME/.android/repositories.cfg
         - yes | sdkmanager "platforms;android-28"
         - yes | sdkmanager "build-tools;28.0.3" 
+        - android list sdk --extended --no-ui --all
+        - android list targets
         - echo $JAVA_HOME  
         - echo $ANDROID_SDK 
         - echo $ANDROID_HOME 
