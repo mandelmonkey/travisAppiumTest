@@ -3,6 +3,15 @@ jobs:
     - stage: android 
       os: linux
       dist: trusty
+      addons:
+        apt:
+          packages:
+            - bridge-utils
+            - libpulse0
+            - libvirt-bin
+            - qemu-kvm
+            - virtinst
+            - ubuntu-vm-builder
       language: android
       android:
         components:
