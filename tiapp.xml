@@ -106,7 +106,7 @@
     </ios>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
         <manifest android:versionCode="24" android:versionName="0.0.25" xmlns:tools="http://schemas.android.com/tools">
-            <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="26"/>
+            <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="28"/>
             <application android:allowBackup="false"
                 android:debuggable="false"
                 android:hardwareAccelerated="true" tools:replace="android:icon">
