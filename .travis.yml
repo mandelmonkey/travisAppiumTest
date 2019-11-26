@@ -11,7 +11,8 @@ jobs:
           - build-tools-26.0.1
           - android-26
           - extra-android-m2repository
-          - sys-img-x86-google_apis-28
+          - sys-img-x86-android-26
+          - sys-img-armeabi-v7a-android-17
         licenses:
           - 'android-sdk-preview-license-d099d938'
           - 'android-sdk-license-.+'
