@@ -15,27 +15,26 @@ jobs:
             - ubuntu-vm-builder
       language: generic
       cache: npm
-      env: 
-        global:
-          - ABI=x86_64
-          - ADB_INSTALL_TIMEOUT=8
-          - ANDROID_HOME=${HOME}/android-sdk
-          - ANDROID_TOOLS_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip"
-          - EMU_FLAVOR=default # use google_apis flavor if no default flavor emulator
-          - GRAVIS="https://raw.githubusercontent.com/DanySK/Gravis-CI/master/"
-          - JDK="1.8"
-          - TOOLS=${ANDROID_HOME}/tools
+      env:
+        - ABI=x86_64
+        - ADB_INSTALL_TIMEOUT=8
+        - ANDROID_HOME=${HOME}/android-sdk
+        - ANDROID_TOOLS_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip"
+        - EMU_FLAVOR=default # use google_apis flavor if no default flavor emulator
+        - GRAVIS="https://raw.githubusercontent.com/DanySK/Gravis-CI/master/"
+        - JDK="1.8"
+        - TOOLS=${ANDROID_HOME}/tools
           # PATH order is incredibly important. e.g. the 'emulator' script exists in more than one place!
-          - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
-          - NODE_VERSION="8.16.0" 
-          - PLATFORM="android"
+        - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
+        - NODE_VERSION="8.16.0" 
+        - PLATFORM="android"
       before_install:
         # Set up KVM
         - sudo adduser $USER libvirt
         - sudo adduser $USER kvm
 
         # Set up JDK 8 for Android SDK
-        - echo ${GRAVIS}.install-jdk-travis.sh
+        - echo $GRAVIS
         - curl "${GRAVIS}.install-jdk-travis.sh" --output ~/.install-jdk-travis.sh
         - export TARGET_JDK="${JDK}"
         - JDK="1.8"
