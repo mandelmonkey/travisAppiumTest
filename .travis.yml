@@ -26,8 +26,9 @@ jobs:
         - yes | sdkmanager "build-tools;28.0.3" 
         - android list sdk --extended --no-ui --all
         - android list targets
-        - echo "y" | android update sdk -a --no-ui --filter sys-img-x86_64-google_apis-28,sys-img-x86-android-28
+        - echo "y" | android update sdk -a --no-ui --filter sys-img-x86-google_apis-28,sys-img-x86-android-28
         - android list targets
+        - emulator -list-avds
         - echo no | android create avd -n test -t 3 --abi google_apis/x86
          # - echo no | android create avd --force -n test -t android-28 --abi x86_64
         - emulator -avd test -no-skin -no-audio -no-window &
