@@ -29,7 +29,7 @@ jobs:
         - android list targets
         - echo no | android create avd -n test -t 3 --abi google_apis/x86_64
          # - echo no | android create avd --force -n test -t android-28 --abi x86_64
-         # - emulator -avd test -no-skin -no-audio -no-window &
+        - emulator -avd test -no-skin -no-audio -no-window &
         - emulator -list-avds
         - android-wait-for-emulator
         - echo $JAVA_HOME  

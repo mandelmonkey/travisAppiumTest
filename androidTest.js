@@ -20,8 +20,8 @@ driver = wd.promiseChainRemote(serverConfig);
 var desired =  { 
   browserName: '',
   platformName: 'Android', 
-  avd:"Pixel_2_API_28",
-  deviceName: 'Pixel_2_API_28', 
+  avd:"test",
+  deviceName: 'test', 
     app: process.cwd()+"/build/android/bin/Nayuta.apk",
         automationName:"UiAutomator2",
 "appActivity": ".NayutaActivity",
