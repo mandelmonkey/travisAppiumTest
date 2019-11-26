@@ -26,8 +26,8 @@ jobs:
         - android list sdk --extended --no-ui --all
         - android list targets
         - echo "y" | android update sdk -a --no-ui --filter sys-img-x86_64-google_apis-28,sys-img-x86_64-android-28
-        - emulator -list-avds
-        - echo no | android create avd --force --name testAVD --abi google_apis/x86_64 --package 'system-images;android-28;google_apis;x86_64'
+        - android list targets
+        - echo no | android create avd -n test -t 3
          # - echo no | android create avd --force -n test -t android-28 --abi x86_64
          # - emulator -avd test -no-skin -no-audio -no-window &
         - emulator -list-avds
