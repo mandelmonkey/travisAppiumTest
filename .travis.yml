@@ -62,8 +62,8 @@ jobs:
         - echo y | sdkmanager "emulator" >/dev/null
         - echo y | sdkmanager "extras;android;m2repository" >/dev/null
         - echo y | sdkmanager "system-images;android-$API;$EMU_FLAVOR;$ABI" >/dev/null # install our emulator
-        - sdkmanager --update
         - echo no | avdmanager create avd --force -n test -k "system-images;android-$API;$EMU_FLAVOR;$ABI" -c 10M
+        - sdkmanager --update
         - |
           EMU_PARAMS="-verbose -no-snapshot -no-window -camera-back none -camera-front none -selinux permissive -qemu -m 2048"
           EMU_COMMAND="emulator"
